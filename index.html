@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="CSS/loadingScreen.css" />
+		<link rel="stylesheet" href="CSS/splashScreen.css" />
+		<link rel="stylesheet" href="CSS/instructionScreen.css" />
+		<link rel="stylesheet" href="CSS/inspirationScreen.css" />
+		<link rel="stylesheet" href="CSS/gameScreen.css" />
+		<title>Crossing The Traffic</title>
+	</head>
+	<!-- <body onresize="resize()"> -->
+	<body>
+		<!-- Loading screen -->
+		<div class="container screen loading-screen fadeout">
+			<div class="loader l2">
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+				<div class="box"></div>
+			</div>
+		</div>
+
+		<!-- Splash screen -->
+		<div class="container screen splash-screen fadeout">
+			<div class="heading">
+				<h1 class="app-name">
+					<span>Crossing The Traffic</span>
+				</h1>
+				<h3 class="creator">
+					<span>- shubham Mehta</span>
+				</h3>
+			</div>
+		</div>
+
+		<!--Inspiration screen -->
+		<div class="container screen inspiration-screen">
+			<div class="content">
+				<h1>
+					<span>Inspiration</span>
+				</h1>
+				<div class="inspiration-content">
+					<h3>
+						<span
+							>This game is a recreated version of
+							<strong
+								><a
+									href="https://code.sololearn.com/WkfMxk2zDbjy"
+									>Andy_Roid</a
+								></strong
+							></span
+						>
+					</h3>
+				</div>
+			</div>
+			<div class="tap">
+				<div class="t1"></div>
+			</div>
+		</div>
+
+		<!--Instruction screen -->
+		<div class="container screen instruction-screen">
+			<div class="content">
+				<h1>
+					<span>Instructions</span>
+				</h1>
+				<div class="instruction-content">
+					<h1 class="heading">
+						<span>" Click "</span>
+					</h1>
+					<h3>
+						<span
+							>- Anywhere to <strong> move/stop</strong> the
+							block</span
+						><br /><span>- Avoid hitting the moving blocks</span>
+					</h3>
+				</div>
+			</div>
+			<div class="tap">
+				<div class="t1"></div>
+			</div>
+		</div>
+
+		<!--Game screen -->
+		<div class="container game">
+			<div class="box player"></div>
+			<div class="box traffic" id="t1"></div>
+			<div class="box traffic"></div>
+			<div class="box traffic"></div>
+			<div class="box traffic"></div>
+			<div class="scores">0</div>
+		</div>
+	</body>
+	<!-- link external javascript file -->
+	<script src="main.js"></script>
+</html>

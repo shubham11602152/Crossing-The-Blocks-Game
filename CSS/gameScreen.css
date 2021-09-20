@@ -1,0 +1,83 @@
+.game {
+	border-top: 10px solid #00000081;
+	border-bottom: 10px solid #00000081;
+	position: relative;
+	height: 100vh;
+	max-width: 400px;
+	overflow: hidden;
+}
+
+.game .box {
+	position: absolute;
+	width: calc(100vh / 14);
+	height: calc(100vh / 14);
+	border-radius: 4px;
+	box-shadow: 0px 0px 5px #6e606088;
+	border: 5px solid rgba(0, 0, 0, 0.3);
+}
+
+.game .player {
+	top: 0;
+	background-color: #00000081;
+}
+
+.game .traffic {
+	/* left: 100px; */
+	left: 5px;
+	animation: move 1s linear infinite;
+}
+
+.game .traffic:nth-child(2) {
+	background-color: #ffff0050;
+	top: 15%;
+	animation-duration: 1.5s;
+	animation-direction: reverse;
+}
+
+.game .traffic:nth-child(3) {
+	background-color: #0000ff50;
+	top: 35%;
+	animation-duration: 1.1s;
+	animation-direction: normal;
+}
+
+.game .traffic:nth-child(4) {
+	background-color: #0ff00050;
+	top: 55%;
+
+	animation-duration: 0.7s;
+	animation-direction: reverse;
+}
+
+.game .traffic:nth-child(5) {
+	background-color: #ff000050;
+	top: 75%;
+	animation-duration: 1.3s;
+	animation-direction: alternate;
+}
+
+.scores {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-family: 'Roboto', sans-serif;
+	font-weight: bolder;
+	font-size: 1.5rem;
+	color: #00000080;
+	text-shadow: 1px 2px 3px #00000020;
+	margin: 5px 15px;
+	transition: all 0.1s ease;
+}
+
+.scale {
+	transform: scale(1.5);
+	color: rgb(255, 176, 111);
+}
+@keyframes move {
+	from {
+		left: -20%;
+	}
+	to {
+		left: 110%;
+	}
+}

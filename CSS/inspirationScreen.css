@@ -1,0 +1,15 @@
+.inspiration-screen {
+	z-index: 7;
+	background-color: transparent;
+}
+.inspiration-screen .content {
+	margin-bottom: 20px;
+}
+
+.inspiration-screen .content > h1 {
+	margin-bottom: 15px;
+}
+
+.inspiration-content h1 {
+	font-size: 1rem;
+}

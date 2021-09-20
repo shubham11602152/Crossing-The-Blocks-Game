@@ -1,0 +1,19 @@
+.splash-screen {
+	z-index: 9;
+	/* animation: fadeout 1s 3s ease-out forwards ; */
+	animation-delay: 6s;
+}
+
+.splash-screen .app-name,
+h1 {
+	font-size: 1.6rem;
+	font-weight: bolder;
+}
+
+.splash-screen .creator,
+h3 {
+	font-size: 0.8rem;
+	font-weight: lighter;
+	font-style: italic;
+	float: right;
+}

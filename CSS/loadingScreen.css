@@ -1,0 +1,71 @@
+.loading-screen {
+	z-index: 10;
+	animation-delay: 3s;
+}
+
+.loading-screen .loader {
+	width: 45px;
+	height: 45px;
+}
+
+.loading-screen .loader .box {
+	width: 33%;
+	height: 33%;
+	float: left;
+	transform: scale(0);
+	border-radius: 4px;
+	background-color: transparent;
+	box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.205);
+}
+
+.l2 .box:nth-child(1) {
+	animation: color2 1s 0s ease-in infinite;
+}
+
+.l2 .box:nth-child(2) {
+	animation: color2 1s 0.1s ease-in infinite;
+}
+.l2 .box:nth-child(4) {
+	animation: color2 1s 0.1s ease-in infinite;
+}
+
+.l2 .box:nth-child(3) {
+	animation: color2 1s 0.2s ease-in infinite;
+}
+.l2 .box:nth-child(5) {
+	animation: color2 1s 0.2s ease-in infinite;
+}
+.l2 .box:nth-child(7) {
+	animation: color2 1s 0.2s ease-in infinite;
+}
+
+.l2 .box:nth-child(6) {
+	animation: color2 1s 0.3s ease-in infinite;
+}
+.l2 .box:nth-child(8) {
+	animation: color2 1s 0.3s ease-in infinite;
+}
+
+.l2 .box:nth-child(9) {
+	animation: color2 1s 0.4s ease-in infinite;
+}
+
+@keyframes color2 {
+	0% {
+		transform: scale(0);
+		background-color: transparent;
+	}
+	25% {
+		background-color: rgba(140, 114, 255, 0.5);
+		transform: scale(1);
+	}
+	75% {
+		background-color: rgba(0, 0, 0, 0.5);
+		transform: scale(1);
+	}
+	100% {
+		transform: scale(0);
+		background-color: rgba(0, 0, 0, 0.5);
+		/* background-color: transparent; */
+	}
+}
