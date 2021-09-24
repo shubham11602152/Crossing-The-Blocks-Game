@@ -5,6 +5,7 @@
 	height: 100vh;
 	max-width: 400px;
 	overflow: hidden;
+	z-index: 6;
 }
 
 .game .box {
@@ -12,18 +13,19 @@
 	width: calc(100vh / 14);
 	height: calc(100vh / 14);
 	border-radius: 4px;
-	box-shadow: 0px 0px 5px #6e606088;
+	/* box-shadow: 0px 0px 5px #6e606088; */
 	border: 5px solid rgba(0, 0, 0, 0.3);
+	/* filter: drop-shadow(3px 3px 5px rgba(0, 0, 0, 0.397)); */
 }
 
 .game .player {
 	top: 0;
-	background-color: #00000081;
+	background-color: #000000;
 }
 
 .game .traffic {
 	/* left: 100px; */
-	left: 5px;
+	left: 100px;
 	animation: move 1s linear infinite;
 }
 

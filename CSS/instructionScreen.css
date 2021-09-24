@@ -34,7 +34,7 @@
 	height: 30px;
 	border-radius: 50%;
 	background-color: rgba(0, 0, 0, 0.712);
-	animation: tapping_anim 1s 0s ease infinite;
+	animation: tapping_anim 1s 0s linear infinite;
 }
 
 @keyframes tapping_anim {
