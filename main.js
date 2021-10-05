@@ -5,16 +5,15 @@ let playerTop,
 	playerY,
 	playerHeight,
 	playerTopPercentage = 0
-var gameStarted = false,
-	collided = false
-var startreached = false,
-	endreached = false
+var gameStarted = (collided = startreached = endreached = false)
 let blockLeft, blockRight, blockWidth
 
 var winHeight = (winWidth = 0)
-
+var movePlayerInterval
 var moveBy = 0
 var playerTime = 500
+var min = 2,
+	max = 7
 
 window.onload = function () {
 	//log('started')
@@ -26,25 +25,12 @@ window.onload = function () {
 	const scores = document.querySelector('.scores')
 	const traffic = document.querySelectorAll('.traffic')
 
-	// block1Pos = block1.getBoundingClientRect()
-	// posX = block1Pos.x
-	// x1width = block1Pos.width
-	// posY = block1Pos.y
-	// y1height = block1Pos.height
-
 	var isMoving = false
 	var isMovingDown = false
 	winHeight = window.innerHeight - 20
 	winWidth = game.getBoundingClientRect().width
 
-	// playerTop = parseInt(getComputedStyle(player).top)
-	// playerBottom = parseInt(getComputedStyle(player).bottom)
 	initialize()
-
-	// t = setTimeout(
-	// 	document.body.addEventListener('click', closeInstruction),
-	// 	9000
-	// )
 
 	instructionScreen.addEventListener('click', closeInstruction),
 		inspirationScreen.addEventListener('click', closeInspiration)
@@ -57,11 +43,11 @@ window.onload = function () {
 
 	function startPlayer() {
 		if (!isMoving) {
-			moveBallInterval = setInterval(move, 1)
+			movePlayerInterval = setInterval(move, 5)
 			// isMoving = true
 			//log('moving')
 		} else {
-			clearInterval(moveBallInterval)
+			clearInterval(movePlayerInterval)
 			// isMoving = false
 			//log('stopped')
 		}
@@ -75,7 +61,7 @@ window.onload = function () {
 	function initialize() {
 		//stop moving the player
 		if (isMoving) {
-			clearInterval(moveBallInterval)
+			clearInterval(movePlayerInterval)
 			isMoving = false
 			//log('stopped')
 		}
@@ -116,9 +102,9 @@ window.onload = function () {
 	function move() {
 		//log('playerTop : ' + playerTop)
 		//log('playerBottom : ' + playerBottom)
-
 		if (playerTop <= 0 && !isMovingDown) {
 			//log('-------------------------------- moving down')
+			setDifficulty()
 			startreached = true
 			isMovingDown = true
 			playerTop += moveBy
@@ -148,8 +134,8 @@ window.onload = function () {
 		playerTopPercentage = (100 * playerTop) / winHeight
 		playerX = player.getBoundingClientRect().x
 		playerY = player.getBoundingClientRect().y
-		log('playerX : ' + playerX)
-		log('playerY : ' + playerY)
+		//log('playerX : ' + playerX)
+		//log('playerY : ' + playerY)
 		//log('player top % : ' + playerTopPercentage)
 	}
 
@@ -186,14 +172,14 @@ window.onload = function () {
 */
 
 	function collisionCheck(bx, by, bwidth, bheight) {
-		log(bwidth)
-		log(bheight)
-		log('bx : ' + bx)
-		log('by : ' + by)
+		// log(bwidth)
+		// log(bheight)
+		// log('bx : ' + bx)
+		// log('by : ' + by)
 		// log('playerX : ' + playerX)
 		// log('playerY : ' + playerY)
-		log('playerHeight : ' + playerHeight)
-		log('check collision')
+		// log('playerHeight : ' + playerHeight)
+		// log('check collision')
 		if (
 			bx + bwidth > playerX &&
 			playerX + playerHeight > bx &&
@@ -205,7 +191,7 @@ window.onload = function () {
 			navigator.vibrate(100)
 			collided = true
 			// pts = -1
-			log('collided')
+			// log('collided')
 			restart()
 			// clearInterval(strt)
 			// point(pts)
@@ -221,20 +207,14 @@ window.onload = function () {
 		playerBottom = parseInt(getComputedStyle(player).bottom)
 		collided = false
 
-		clearInterval(moveBallInterval)
+		clearInterval(movePlayerInterval)
 		isMoving = false
 		// initialize()
 	}
 
 	function updateEvents() {
-		log('updating')
+		// log('updating')
 
-		// block1 = traffic[0]
-		// block2 = traffic[1]
-		// block3 = traffic[2]
-		// block4 = traffic[3]
-
-		// blockPos = block.getBoundingClientRect()
 		block1Pos = traffic[0].getBoundingClientRect()
 		block2Pos = traffic[1].getBoundingClientRect()
 		block3Pos = traffic[2].getBoundingClientRect()
@@ -244,11 +224,6 @@ window.onload = function () {
 		collisionCheck(block2Pos.x, block2Pos.y, blockWidth, blockWidth)
 		collisionCheck(block3Pos.x, block3Pos.y, blockWidth, blockWidth)
 		collisionCheck(block4Pos.x, block4Pos.y, blockWidth, blockWidth)
-
-		// collisionCheck(block1Pos.x - tx, block1Pos.y - ty, x1width, y1height)
-		// collisionCheck(block2Pos.x - tx, block2Pos.y - ty, x2width, y2height)
-		// collisionCheck(block3Pos.x - tx, block3Pos.y - ty, x3width, y3height)
-		// collisionCheck(block4Pos.x - tx, block4Pos.y - ty, x4width, y4height)
 
 		// if (y <= startpoint && !startreached) {
 		// 	startreached = true
@@ -306,6 +281,10 @@ window.onload = function () {
 		scores.innerText = ++score
 	}
 
+	function point() {
+		document.getElementById('points').textContent = pts
+	}
+
 	function closeInstruction() {
 		instructionScreen.classList.add('fadeout')
 		document.body.removeEventListener('click', closeInstruction)
@@ -313,6 +292,34 @@ window.onload = function () {
 	function closeInspiration() {
 		inspirationScreen.classList.add('fadeout')
 		document.body.removeEventListener('click', closeInspiration)
+	}
+
+	function setDifficulty() {
+		configBlockSpeedAndDirection(traffic[0])
+		configBlockSpeedAndDirection(traffic[1])
+		configBlockSpeedAndDirection(traffic[2])
+		configBlockSpeedAndDirection(traffic[3])
+
+		//spdDelay = Math.min(d1,d2,d3,d4);
+		//console.log(spdDelay);
+	}
+
+	function configBlockSpeedAndDirection(block) {
+		block.style.animationDuration = randNum(min, max) + 's'
+		var dirColor = randDirection()
+		block.style.animationDirection = dirColor.dir
+		block.style.backgroundColor = dirColor.color
+	}
+	function randNum(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min)
+	}
+	function randDirection() {
+		var directions = [
+			{ dir: 'normal', color: 'transparent' },
+			{ dir: 'reverse', color: 'black' },
+			{ dir: 'alternate', color: 'red' },
+		]
+		return directions[randNum(0, 2)]
 	}
 }
 
