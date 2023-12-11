@@ -25,6 +25,10 @@ a {
 	color: black;
 }
 
+a:hover{
+	text-decoration: underline;
+}
+
 body {
 	height: 100vh;
 	overflow: hidden;

@@ -1,7 +1,5 @@
 .inspiration-screen {
-	z-index: 7;
-	background-color: transparent;
-	backdrop-filter: blur(10px);
+	z-index: 8;
 }
 .inspiration-screen .content {
 	margin-bottom: 20px;
